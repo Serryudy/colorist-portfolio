@@ -856,9 +856,9 @@ useEffect(() => {
               </div>
 
               <div className="mt-8 text-center">
-                <p className="text-gray-400 text-sm max-w-md mx-auto">
-                  Luminora Pro includes a 30-day money-back guarantee if you're not completely satisfied with your purchase.
-                </p>
+              <p className="text-lg text-white">
+                A chromatic alchemist transforming light into emotion, with half a decade spent painting stories through spectral manipulation. Each project is a canvas where physics bows to poetry.
+              </p>
               </div>
 
               <div className="mt-16 text-center">
@@ -946,8 +946,8 @@ useEffect(() => {
                   <input type="hidden" name="date" />
       
                   {formStatus.submitted && (
-                    <div className="bg-green-500/20 border border-green-500 text-green-300 px-4 py-3 rounded">
-                      Message sent successfully! We'll get back to you soon.
+                    <div className="absolute -bottom-6 -right-6 bg-[#FF6B00] text-black p-4 rounded-lg font-medium shadow-lg">
+                      DaVinci Resolve 18 Alchemist
                     </div>
                   )}
       
