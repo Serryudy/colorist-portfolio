@@ -636,7 +636,7 @@ useEffect(() => {
                   </div>
                 </div>
               </div>
-      
+
               {/* Before/After Slider */}
               <div className="mb-12">
                 <h3 className="text-2xl font-medium mb-6 text-center">See the Luminora difference</h3>
@@ -676,7 +676,7 @@ useEffect(() => {
                       Before
                     </div>
                   </div>
-      
+
                   {/* After image with clip path */}
                   <div
                     className="absolute inset-0 z-20 transition-all duration-75 ease-out pointer-events-none"
@@ -694,7 +694,7 @@ useEffect(() => {
                       After Luminora
                     </div>
                   </div>
-      
+
                   {/* Slider control */}
                   <div
                     className="absolute top-0 bottom-0 z-30 w-1 bg-white shadow-lg"
@@ -709,7 +709,7 @@ useEffect(() => {
                       </svg>
                     </div>
                   </div>
-      
+
                   {/* Range input for mobile accessibility (alternative control) */}
                   <input
                     type="range"
@@ -725,205 +725,12 @@ useEffect(() => {
                   />
                 </div>
               </div>
-              {/* Luminora Pro Section */}
-              <div className="mt-24">
-                <h3 className="text-3xl font-semibold mb-8 text-center">
-                  <span className="text-[#FF6B00] drop-shadow-[0_0_10px_rgba(255,107,0,0.6)]">Luminora Pro</span> - Premium PowerGrade Suite
-                </h3>
-                
-                <div className="max-w-lg mx-auto">
-                  <div className="bg-gradient-to-br from-[#FF6B00]/30 to-purple-500/20 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
-                    <div className="bg-[#1A1A1A] p-6 rounded-xl h-full">
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-semibold flex items-center gap-2">
-                          <span className="text-[#FF6B00] text-2xl">🔥</span>
-                          Luminora Pro PowerGrade Suite
-                        </h3>
-                        <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-bold">PREMIUM</span>
-                      </div>
-                      
-                      <ul className="space-y-3 text-gray-200 mb-6">
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          24 premium Hollywood-grade looks
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          Advanced Pro ACES color pipeline
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          Professional HDR compatibility
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          Advanced camera-specific optimizations
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          Premium grain and texture library
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          One-click tracking and masking tools
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          Expert email support
-                        </li>
-                      </ul>
-                      
-                      <div className="text-3xl font-bold mb-4 flex items-end gap-2">
-                        $30<span className="text-sm font-normal text-gray-400">/one-time purchase</span>
-                      </div>
-                      
-                      <button
-                        onClick={() => setShowPaymentModal(true)}
-                        className="w-full py-3 bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity duration-300 shadow-lg"
-                      >
-                        Purchase Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 text-center">
-                  <p className="text-gray-400 text-sm max-w-md mx-auto">
-                    Luminora Pro includes a 30-day money-back guarantee if you're not completely satisfied with your purchase.
-                  </p>
-                </div>
-              </div>
 
-              {/* Payment Modal with 2Checkout Form */}
-              {showPaymentModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-                  <div 
-                    className="absolute inset-0 bg-black/70 backdrop-blur-sm" 
-                    onClick={() => setShowPaymentModal(false)}
-                  ></div>
-                  <div className="bg-[#1A1A1A] rounded-xl p-6 md:p-8 w-full max-w-md relative z-10 shadow-xl border border-[#FF6B00]/30">
-                    <button 
-                      onClick={() => setShowPaymentModal(false)}
-                      className="absolute right-4 top-4 text-gray-400 hover:text-white"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                    
-                    <h3 className="text-2xl font-bold mb-6 text-center">
-                      Purchase <span className="text-[#FF6B00]">Luminora Pro</span>
-                    </h3>
-                    
-                    {formSubmitting ? (
-                      <div className="text-center py-8">
-                        <div className="w-12 h-12 border-t-2 border-b-2 border-[#FF6B00] rounded-full animate-spin mx-auto mb-4"></div>
-                        <p className="text-gray-300">Processing your payment...</p>
-                      </div>
-                    ) : (
-                      <div>
-                        {/* Form to collect customer info before redirecting to 2Checkout */}
-                        <form onSubmit={handlePaymentSubmit} className="space-y-4">
-                          <div>
-                            <label className="block text-gray-300 mb-2" htmlFor="name">Full Name</label>
-                            <input
-                              type="text"
-                              id="name"
-                              value={customerName}
-                              onChange={(e) => setCustomerName(e.target.value)}
-                              className="w-full bg-[#2A2A2A] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FF6B00] transition-colors"
-                              placeholder="John Doe"
-                              required
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-gray-300 mb-2" htmlFor="email">Email Address</label>
-                            <input
-                              type="email"
-                              id="email"
-                              value={customerEmail}
-                              onChange={(e) => setCustomerEmail(e.target.value)}
-                              className="w-full bg-[#2A2A2A] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FF6B00] transition-colors"
-                              placeholder="your@email.com"
-                              required
-                            />
-                            <p className="text-gray-400 text-xs mt-1">Your PowerGrade will be sent to this email after purchase</p>
-                          </div>
-                          
-                          <div className="bg-[#2A2A2A] p-4 rounded-lg">
-                            <div className="flex justify-between mb-2">
-                              <span className="text-gray-300">Luminora Pro PowerGrade</span>
-                              <span className="text-white">$30.00</span>
-                            </div>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-gray-400">Includes lifetime access</span>
-                            </div>
-                          </div>
-                          
-                          <div className="pt-4">
-                            <button
-                              type="submit"
-                              className="w-full py-3 bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity duration-300 shadow-lg"
-                            >
-                              Proceed to Payment
-                            </button>
-                            <p className="text-center text-gray-400 text-xs mt-4">
-                              Secure payment processing by 2Checkout
-                            </p>
-                          </div>
-                        </form>
-                        
-                        {/* Hidden 2Checkout Form - This will be submitted programmatically */}
-                        <form
-                          id="2checkout-form"
-                          action="https://sandbox.2checkout.com/checkout/purchase" 
-                          method="post"
-                          className="hidden"
-                        >
-                          {/* Required 2Checkout Parameters */}
-                          <input type="hidden" name="sid" value="YOUR_SELLER_ID" />
-                          <input type="hidden" name="mode" value="2CO" />
-                          <input type="hidden" name="li_0_type" value="product" />
-                          <input type="hidden" name="li_0_name" value="Luminora Pro PowerGrade" />
-                          <input type="hidden" name="li_0_price" value="30.00" />
-                          <input type="hidden" name="li_0_quantity" value="1" />
-                          <input type="hidden" name="li_0_tangible" value="N" />
-                          <input type="hidden" name="li_0_product_id" value="luminora-pro" />
-                          <input type="hidden" name="currency_code" value="USD" />
-                          
-                          {/* Customer details - These will be filled programmatically */}
-                          <input type="hidden" name="card_holder_name" value={customerName} />
-                          <input type="hidden" name="email" value={customerEmail} />
-                          
-                          {/* Return URLs */}
-                          <input type="hidden" name="x_receipt_link_url" value={`${window.location.origin}/thank-you`} />
-                          
-                          {/* This identifies the purchase for your records */}
-                          <input type="hidden" name="merchant_order_id" value={`LUMINORA-${Date.now()}`} />
-                        </form>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-              {/* free luminora */}	
-              <div className="max-w-lg mx-auto">
+              {/* PowerGrade options - Side by side */}
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
+                {/* Free PowerGrade */}
                 <div className="bg-gradient-to-br from-[#FF6B00]/20 to-[#FF6B00]/5 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
-                  <div className="bg-[#1A1A1A] p-6 rounded-xl h-full">
+                  <div className="bg-[#1A1A1A] p-6 rounded-xl h-full flex flex-col">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-semibold flex items-center gap-2">
                         <span className="text-[#FF6B00] text-2xl">⚡</span>
@@ -931,7 +738,7 @@ useEffect(() => {
                       </h3>
                       <span className="bg-[#FF6B00] text-black text-xs px-2 py-1 rounded-full font-bold">FREE DOWNLOAD</span>
                     </div>
-                    <ul className="space-y-2 text-gray-200 mb-6">
+                    <ul className="space-y-2 text-gray-200 mb-6 flex-grow">
                       <li className="flex items-center gap-2">
                         <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -977,7 +784,83 @@ useEffect(() => {
                     </button>
                   </div>
                 </div>
+                
+                {/* Pro PowerGrade */}
+                <div className="bg-gradient-to-br from-[#FF6B00]/30 to-purple-500/20 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
+                  <div className="bg-[#1A1A1A] p-6 rounded-xl h-full flex flex-col">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-semibold flex items-center gap-2">
+                        <span className="text-[#FF6B00] text-2xl">🔥</span>
+                        Luminora Pro PowerGrade Suite
+                      </h3>
+                      <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-bold">PREMIUM</span>
+                    </div>
+                    
+                    <ul className="space-y-3 text-gray-200 mb-6 flex-grow">
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        24 premium Hollywood-grade looks
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        Advanced Pro ACES color pipeline
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        Professional HDR compatibility
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        Advanced camera-specific optimizations
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        Premium grain and texture library
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        One-click tracking and masking tools
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        Expert email support
+                      </li>
+                    </ul>
+                    
+                    <div className="text-3xl font-bold mb-4 flex items-end gap-2">
+                      $30<span className="text-sm font-normal text-gray-400">/one-time purchase</span>
+                    </div>
+                    
+                    <button
+                      onClick={() => setShowPaymentModal(true)}
+                      className="w-full py-3 bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity duration-300 shadow-lg"
+                    >
+                      Purchase Now
+                    </button>
+                  </div>
+                </div>
               </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-gray-400 text-sm max-w-md mx-auto">
+                  Luminora Pro includes a 30-day money-back guarantee if you're not completely satisfied with your purchase.
+                </p>
+              </div>
+
               <div className="mt-16 text-center">
                 <p className="text-gray-300 mb-6">Looking for a custom solution?</p>
                 <button
@@ -1203,9 +1086,9 @@ useEffect(() => {
                 © {new Date().getFullYear()} ColorCraft. All rights reserved.
               </p>
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Privacy Policy</a>
-                <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Terms of Service</a>
-                <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Cookie Policy</a>
+                <a href="/refund-policy" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Refund Policy</a>
+                <a href="/privacy-policy" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Privacy Policy</a>
+                <a href="/terms-conditions" className="text-gray-500 hover:text-gray-300 transition-colors duration-300 text-sm">Terms of Service</a>
               </div>
             </div>
           </div>
