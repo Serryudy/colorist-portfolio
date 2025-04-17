@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
           <p>We use cookies and similar technologies to enhance your browsing experience and analyze website traffic. You can manage cookie preferences through your browser settings.</p>
           
           <h2 className="text-2xl font-bold text-[#FF6B00] mt-8">Changes to This Policy</h2>
-          <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will post the updated policy on this page with a revised "Last Updated" date.</p>
+          <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will post the updated policy on this page with a revised &quot;Last Updated&quot; date.</p>
           
           <h2 className="text-2xl font-bold text-[#FF6B00] mt-8">Contact Us</h2>
           <p>If you have questions about this Privacy Policy or our data practices, please contact us at pabasaraf79@gmail.com.</p>
