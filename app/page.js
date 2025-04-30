@@ -6,6 +6,8 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Preloader from './Preloader';
+import { usePaddle } from './hooks/usePaddle';
+import CheckoutModal from './components/CheckoutModal';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -20,10 +22,10 @@ export default function Home() {
   const threeCanvasRef = useRef(null);
   const sliderRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [customerEmail, setCustomerEmail] = useState('');
-  const [customerName, setCustomerName] = useState('');
-  const [formSubmitting, setFormSubmitting] = useState(false);
+  const { paddleLoaded, error } = usePaddle();
+  // Add these after your existing state declarations
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -37,28 +39,6 @@ export default function Home() {
     error: null
   });
   const formRef = useRef(null);
-
-  const initialize2Checkout = () => {
-    // This assumes you've added the 2Checkout library in your _document.js or via a script tag
-    if (typeof window !== 'undefined' && window.TCO) {
-      // Initialize 2Checkout with your seller ID
-      window.TCO.loadPubKey('sandbox'); // Use 'production' for live environment
-    }
-  };
-
-  // Handle form submission
-const handlePaymentSubmit = (e) => {
-  e.preventDefault();
-  setFormSubmitting(true);
-  
-  // Submit the form to 2Checkout
-  document.getElementById('2checkout-form').submit();
-};
-
-// Add useEffect to initialize 2Checkout when component mounts
-useEffect(() => {
-  initialize2Checkout();
-}, []);
 
   useEffect(() => {
     // When the component mounts, start loading resources
@@ -129,11 +109,59 @@ useEffect(() => {
     }));
   };
 
-  
+  // Update the purchase handler
+  const handlePurchase = () => {
+    setShowCheckoutModal(true);
+  };
+
+  const handleCheckoutSubmit = async (formData) => {
+    setCheckoutLoading(true);
+    
+    try {
+      // If Paddle is loaded, use it
+      if (paddleLoaded) {
+        window.Paddle.Checkout.open({
+          email: formData.email,
+          product: process.env.NEXT_PUBLIC_PADDLE_PRODUCT_ID,
+          successCallback: (data) => {
+            console.log('Purchase successful:', data);
+            handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
+            setShowCheckoutModal(false);
+          },
+          closeCallback: () => {
+            setShowCheckoutModal(false);
+            setCheckoutLoading(false);
+          },
+          errorCallback: (error) => {
+            console.error('Checkout error:', error);
+            alert('There was an error processing your payment. Please try again.');
+            setCheckoutLoading(false);
+          }
+        });
+      } else {
+        // Fallback to custom payment processing
+        // You would implement your own payment processing here
+        console.log('Processing payment with form data:', formData);
+        // Simulate payment processing
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
+        setShowCheckoutModal(false);
+      }
+    } catch (err) {
+      console.error('Payment processing error:', err);
+      alert('There was an error processing your payment. Please try again.');
+    } finally {
+      setCheckoutLoading(false);
+    }
+  };
+
   // Handle slider functionality
   const handleSliderChange = (e) => {
     setSliderPosition(e.target.value);
   };
+
+  
+  
   
   const handleSliderMove = (e) => {
     if (sliderRef.current) {
@@ -271,6 +299,8 @@ useEffect(() => {
     };
     
     animate();
+
+    
     
     // Handle window resize
     const handleResize = () => {
@@ -571,7 +601,7 @@ useEffect(() => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                       <div className="p-4 w-full">
-                        <button className="w-full py-2 bg-[#FF6B00] text-white rounded font-medium hover:bg-[#E36000] transition-colors duration-300 shadow-lg shadow-black/50" onClick={() => handleDownload(lut.file)}>
+                        <button className="w-full py-2 bg-[#FF6B00] text-white rounded font-medium hover:bg-[#E36000] transition-colors duration-300 shadow-lg" onClick={() => handleDownload(lut.file)}>
                           Download LUT
                         </button>
                       </div>
@@ -734,110 +764,87 @@ useEffect(() => {
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-semibold flex items-center gap-2">
                         <span className="text-[#FF6B00] text-2xl">⚡</span>
-                        Luminora PowerGrade Suite
+                        Luminora Base PowerGrade
                       </h3>
-                      <span className="bg-[#FF6B00] text-black text-xs px-2 py-1 rounded-full font-bold">FREE DOWNLOAD</span>
+                      <span className="bg-[#FF6B00] text-black text-xs px-2 py-1 rounded-full font-bold">FREE</span>
                     </div>
                     <ul className="space-y-2 text-gray-200 mb-6 flex-grow">
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        12 premium cinematic looks
+                        6 cinematic base looks
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Advanced DaVinci Resolve nodes
+                        Basic node structure
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Skin tone protection tools
+                        Standard color correction tools
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Filmic saturation film emulation
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        High-end camera texture mapping
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        Compatible with all major NLEs
+                        Basic film emulation
                       </li>
                     </ul>
-                    <div className="text-2xl font-bold mb-4">FREE<span className="text-sm font-normal text-gray-400">/unlimited access</span></div>
+                    <div className="text-2xl font-bold mb-4">FREE</div>
                     <button
-                      onClick={() => handleDownload("/downloads/powergrade/LUMINORA.zip")}
-                      className="w-full py-3 bg-[#FF6B00] text-white rounded-lg font-medium hover:bg-[#E36000] transition-colors duration-300 shadow-lg">
+                      onClick={() => handleDownload("/downloads/powergrade/LUMINORA-BASE.zip")}
+                      className="w-full py-3 bg-[#FF6B00] text-white rounded-lg font-medium hover:bg-[#E36000] transition-colors duration-300 shadow-lg"
+                    >
                       Download Now
                     </button>
                   </div>
                 </div>
-                
+
                 {/* Pro PowerGrade */}
                 <div className="bg-gradient-to-br from-[#FF6B00]/30 to-purple-500/20 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
                   <div className="bg-[#1A1A1A] p-6 rounded-xl h-full flex flex-col">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-semibold flex items-center gap-2">
                         <span className="text-[#FF6B00] text-2xl">🔥</span>
-                        Luminora Pro PowerGrade Suite
+                        Luminora Pro PowerGrade
                       </h3>
                       <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-bold">PREMIUM</span>
                     </div>
                     
                     <ul className="space-y-3 text-gray-200 mb-6 flex-grow">
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        24 premium Hollywood-grade looks
+                        15 premium Hollywood-grade looks
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Advanced Pro ACES color pipeline
+                        Advanced ACES color pipeline
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Professional HDR compatibility
+                        HDR compatibility presets
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Advanced camera-specific optimizations
+                        Professional texture mapping tools
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Premium grain and texture library
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        One-click tracking and masking tools
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        Expert email support
+                        Advanced film grain library
                       </li>
                     </ul>
                     
@@ -846,8 +853,8 @@ useEffect(() => {
                     </div>
                     
                     <button
-                      onClick={() => setShowPaymentModal(true)}
-                      className="w-full py-3 bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity duration-300 shadow-lg"
+                      onClick={handlePurchase}
+                      className="w-full py-3 rounded-lg font-medium transition-all duration-300 shadow-lg bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white hover:opacity-90"
                     >
                       Purchase Now
                     </button>
@@ -1093,6 +1100,15 @@ useEffect(() => {
             </div>
           </div>
         </footer>
+
+        {showCheckoutModal && (
+          <CheckoutModal
+            isOpen={showCheckoutModal}
+            onClose={() => setShowCheckoutModal(false)}
+            onSubmit={handleCheckoutSubmit}
+            loading={checkoutLoading}
+          />
+        )}
       </div>
     </div>
   );
