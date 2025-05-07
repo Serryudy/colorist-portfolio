@@ -28,7 +28,7 @@ export function usePaddle() {
 
         window.Paddle.Setup({
           vendor: process.env.NEXT_PUBLIC_PADDLE_VENDOR_ID,
-          environment: process.env.NODE_ENV === 'production' ? 'production' : 'sandbox'
+          environment: 'production'
         });
 
         setPaddleLoaded(true);
