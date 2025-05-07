@@ -118,11 +118,17 @@ export default function Home() {
     setCheckoutLoading(true);
     
     try {
-      // If Paddle is loaded, use it
       if (paddleLoaded) {
+        // Store customer email for Retain integration
+        localStorage.setItem('customerEmail', formData.email);
+        
         window.Paddle.Checkout.open({
           email: formData.email,
           product: process.env.NEXT_PUBLIC_PADDLE_PRODUCT_ID,
+          passthrough: JSON.stringify({ 
+            name: formData.name,
+            email: formData.email
+          }),
           successCallback: (data) => {
             console.log('Purchase successful:', data);
             handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
@@ -139,18 +145,11 @@ export default function Home() {
           }
         });
       } else {
-        // Fallback to custom payment processing
-        // You would implement your own payment processing here
-        console.log('Processing payment with form data:', formData);
-        // Simulate payment processing
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
-        setShowCheckoutModal(false);
+        throw new Error('Payment system unavailable');
       }
     } catch (err) {
       console.error('Payment processing error:', err);
       alert('There was an error processing your payment. Please try again.');
-    } finally {
       setCheckoutLoading(false);
     }
   };
