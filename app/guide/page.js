@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 const CineGradeGuide = () => {
   return (
@@ -32,12 +33,17 @@ const CineGradeGuide = () => {
                 A meticulously crafted node structure that transforms ordinary footage into cinematic masterpieces. This PowerGrade emulates the look and feel of footage shot on high-end cinema cameras, with film-like characteristics, balanced highlights and shadows, and the texture that defines professional cinematography.
               </p>
               <div className="italic text-2xl text-gray-400 my-12 text-center px-8">
-                "The right color grade doesn't just correct an image — it tells a story."
+                &ldquo;The right color grade doesn&apos;t just correct an image &mdash; it tells a story.&rdquo;
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <img src="/images/powergrade/overview.png" alt="CineGrade Overview" className="max-w-full h-auto" />
+              <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg relative">
+                <Image
+                  src="/images/powergrade/overview.png"
+                  alt="CineGrade Overview"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
