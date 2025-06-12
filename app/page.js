@@ -23,7 +23,6 @@ export default function Home() {
   const sliderRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const { paddleLoaded, error } = usePaddle();
-  // Add these after your existing state declarations
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
@@ -119,30 +118,52 @@ export default function Home() {
     
     try {
       if (paddleLoaded) {
-        // Store customer email for Retain integration
+        // Store customer email for Retain integration if needed
         localStorage.setItem('customerEmail', formData.email);
         
-        window.Paddle.Checkout.open({
-          email: formData.email,
-          product: process.env.NEXT_PUBLIC_PADDLE_PRODUCT_ID,
-          passthrough: JSON.stringify({ 
+        // New Paddle Client Token approach
+        // Create a checkout with the Paddle API
+        const checkout = await window.Paddle.Checkout.open({
+          settings: {
+            displayMode: 'popup',
+            theme: 'dark',
+            locale: 'en',
+            successUrl: `${window.location.origin}/success?email=${encodeURIComponent(formData.email)}`,
+            closeOnSuccess: true,
+          },
+          items: [
+            {
+              priceId: process.env.NEXT_PUBLIC_PADDLE_PRICE_ID, // Use price ID instead of product ID
+              quantity: 1
+            }
+          ],
+          customer: {
+            email: formData.email,
+            name: formData.name
+          },
+          customData: {
             name: formData.name,
             email: formData.email
-          }),
-          successCallback: (data) => {
-            console.log('Purchase successful:', data);
-            handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
-            setShowCheckoutModal(false);
-          },
-          closeCallback: () => {
-            setShowCheckoutModal(false);
-            setCheckoutLoading(false);
-          },
-          errorCallback: (error) => {
-            console.error('Checkout error:', error);
-            alert('There was an error processing your payment. Please try again.');
-            setCheckoutLoading(false);
           }
+        });
+
+        // Handle checkout events
+        checkout.addEventListener('checkout:completed', (event) => {
+          console.log('Purchase successful:', event.detail);
+          handleDownload("/downloads/powergrade/LUMINORA-PRO.zip", "LUMINORA-PRO.zip");
+          setShowCheckoutModal(false);
+          setCheckoutLoading(false);
+        });
+
+        checkout.addEventListener('checkout:closed', () => {
+          setShowCheckoutModal(false);
+          setCheckoutLoading(false);
+        });
+
+        checkout.addEventListener('checkout:error', (error) => {
+          console.error('Checkout error:', error);
+          alert('There was an error processing your payment. Please try again.');
+          setCheckoutLoading(false);
         });
       } else {
         throw new Error('Payment system unavailable');
@@ -394,7 +415,7 @@ export default function Home() {
         <Head>
           <title>Color Grading Portfolio | Luminora PowerGrades</title>
           <meta name="description" content="Professional color grading, Luminora PowerGrades, LUTs, and footage" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/logo.ico" />
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
         </Head>
         {/* Three.js Canvas Background - Z-index reduced */}
@@ -755,92 +776,67 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* PowerGrade options - Side by side */}
+              {/* PowerGrade section - Updated layout */}
               <div className="grid md:grid-cols-2 gap-8 mb-16">
-                {/* Free PowerGrade */}
+                {/* Image Section */}
+                <div className="relative group cursor-pointer" onClick={() => window.location.href = '/guide'}>
+                  <div className="w-full h-full rounded-xl overflow-hidden border-2 border-[#FF6B00] shadow-lg shadow-[#FF6B00]/20">
+                    <img
+                      src="/images/luminora.png"
+                      alt="Luminora PowerGrade Preview"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <span className="text-2xl font-bold text-white">View Guide</span>
+                        <div className="mt-2">
+                          <svg className="w-6 h-6 text-[#FF6B00] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Luminora PowerGrade */}
                 <div className="bg-gradient-to-br from-[#FF6B00]/20 to-[#FF6B00]/5 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
                   <div className="bg-[#1A1A1A] p-6 rounded-xl h-full flex flex-col">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-semibold flex items-center gap-2">
-                        <span className="text-[#FF6B00] text-2xl">⚡</span>
-                        Luminora Base PowerGrade
-                      </h3>
-                      <span className="bg-[#FF6B00] text-black text-xs px-2 py-1 rounded-full font-bold">FREE</span>
-                    </div>
-                    <ul className="space-y-2 text-gray-200 mb-6 flex-grow">
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        6 cinematic base looks
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        Basic node structure
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        Standard color correction tools
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        Basic film emulation
-                      </li>
-                    </ul>
-                    <div className="text-2xl font-bold mb-4">FREE</div>
-                    <button
-                      onClick={() => handleDownload("/downloads/powergrade/LUMINORA-BASE.zip")}
-                      className="w-full py-3 bg-[#FF6B00] text-white rounded-lg font-medium hover:bg-[#E36000] transition-colors duration-300 shadow-lg"
-                    >
-                      Download Now
-                    </button>
-                  </div>
-                </div>
-
-                {/* Pro PowerGrade */}
-                <div className="bg-gradient-to-br from-[#FF6B00]/30 to-purple-500/20 p-1 rounded-xl shadow-lg shadow-[#FF6B00]/20">
-                  <div className="bg-[#1A1A1A] p-6 rounded-xl h-full flex flex-col">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold flex items-center gap-2">
                         <span className="text-[#FF6B00] text-2xl">🔥</span>
-                        Luminora Pro PowerGrade
+                        Luminora PowerGrade
                       </h3>
-                      <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-bold">PREMIUM</span>
+                      <span className="bg-[#FF6B00] text-black text-xs px-2 py-1 rounded-full font-bold">PREMIUM</span>
                     </div>
                     
                     <ul className="space-y-3 text-gray-200 mb-6 flex-grow">
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         15 premium Hollywood-grade looks
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Advanced ACES color pipeline
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         HDR compatibility presets
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Professional texture mapping tools
                       </li>
                       <li className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-[#FF6B00]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         Advanced film grain library
@@ -851,12 +847,14 @@ export default function Home() {
                       $30<span className="text-sm font-normal text-gray-400">/one-time purchase</span>
                     </div>
                     
-                    <button
-                      onClick={handlePurchase}
-                      className="w-full py-3 rounded-lg font-medium transition-all duration-300 shadow-lg bg-gradient-to-r from-[#FF6B00] to-purple-600 text-white hover:opacity-90"
+                    <a
+                      href="https://pabasara125.gumroad.com/l/wmxupp" //checkout link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 rounded-lg font-medium transition-all duration-300 shadow-lg bg-gradient-to-r from-[#FF6B00] to-[#FF8F00] text-white hover:opacity-90 text-center"
                     >
                       Purchase Now
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

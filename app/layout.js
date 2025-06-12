@@ -22,6 +22,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
       <Script src="https://www.2checkout.com/static/checkout/javascript/direct.min.js" strategy="beforeInteractive" />
+      <link rel="icon" href="/logo.ico" />
+
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
