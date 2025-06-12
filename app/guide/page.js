@@ -120,7 +120,12 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-4">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <img src="/images/powergrade/CST.png" alt="Input Device Transformation" className="max-w-full h-auto" />
+                <Image
+                  src="/images/powergrade/CST.png"
+                  alt="Input Device Transformation"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
@@ -195,7 +200,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <img src="/images/powergrade/correction.png" alt="Correction Nodes" className="max-w-full h-auto" />
+            <Image src="/images/powergrade/correction.png" alt="Correction Nodes" fill className="max-w-full h-auto" />
           </div>
         </div>
       </section>
@@ -228,7 +233,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-5">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <img src="/images/powergrade/kodakprintcolor.png" className="max-w-full h-auto" alt="Kodak Print Color" />
+                <Image src="/images/powergrade/kodakprintcolor.png" className="max-w-full h-auto" alt="Kodak Print Color" />
               </div>
             </div>
           </div>
@@ -294,7 +299,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <img src="/images/powergrade/lookbuild.png" alt="Look Development Visualization" className="max-w-full h-auto" />
+            <Image src="/images/powergrade/lookbuild.png" alt="Look Development Visualization" className="max-w-full h-auto" />
           </div>
         </div>
       </section>
@@ -323,7 +328,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-4">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <img src="/images/powergrade/printfilm.png" alt="Film LUT Effect" className="max-w-full h-auto" />
+                <Image src="/images/powergrade/printfilm.png" alt="Film LUT Effect" className="max-w-full h-auto" />
               </div>
             </div>
           </div>
@@ -341,7 +346,7 @@ const CineGradeGuide = () => {
           <div className="pl-6 border-l-4 border-gray-600 my-8">
             <h4 className="text-xl font-bold mb-2">SAT NODE SETTINGS</h4>
             <p className="leading-relaxed">
-              To adjust the film saturation, you must move inside the compound node and change the gain of the node labeled as "SAT". Higher values create more saturated colors with the distinctive film color response curve.
+              To adjust the film saturation, you must move inside the compound node and change the gain of the node labeled as &quot;SAT&quot;. Higher values create more saturated colors with the distinctive film color response curve.
             </p>
           </div>
           
@@ -372,7 +377,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="md:col-span-5">
               <div className="bg-[#29282f] flex items-center justify-center overflow-hidden h-80 rounded-lg">
-                <img src="/images/powergrade/skintone.png" alt="Skin Tone Correction" className="max-w-full h-auto" />
+                <Image src="/images/powergrade/skintone.png" alt="Skin Tone Correction" className="max-w-full h-auto" />
               </div>
             </div>
           </div>
@@ -440,7 +445,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <img src="/images/powergrade/final.png" alt="Finishing Nodes" className="max-w-full h-auto" />
+            <Image src="/images/powergrade/final.png" alt="Finishing Nodes" className="max-w-full h-auto" />
           </div>
         </div>
       </section>
