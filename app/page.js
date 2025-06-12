@@ -7,7 +7,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Preloader from './Preloader';
 import { usePaddle } from './hooks/usePaddle';
-import Image from 'next/image';
 import CheckoutModal from './components/CheckoutModal';
 
 export default function Home() {
@@ -416,7 +415,6 @@ export default function Home() {
         <Head>
           <title>Color Grading Portfolio | Luminora PowerGrades</title>
           <meta name="description" content="Professional color grading, Luminora PowerGrades, LUTs, and footage" />
-          <link rel="icon" href="/logo.ico" />
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
         </Head>
         {/* Three.js Canvas Background - Z-index reduced */}
@@ -523,7 +521,7 @@ export default function Home() {
               <div className="relative">
                 <div className="bg-gradient-to-br from-[#FF6B00]/30 to-[#FF6B00]/10 p-1 rounded-2xl shadow-lg shadow-[#FF6B00]/20">
                   <div className="bg-[#1A1A1A] rounded-2xl overflow-hidden">
-                    <Image
+                    <img
                       src="/images/pabasarafernando.png"
                       alt="Colorist at work"
                       className="w-full h-auto"
@@ -615,7 +613,7 @@ export default function Home() {
               ].map((lut, index) => (
                 <div key={index} className="bg-[#1A1A1A] rounded-xl overflow-hidden group shadow-lg shadow-black/50 hover:shadow-[#FF6B00]/20 transition-all duration-300 transform hover:-translate-y-1">
                   <div className="">
-                    <Image
+                    <img
                       src={lut.src}
                       alt={lut.name}
                       className="w-full h-full object-cover"
@@ -717,7 +715,7 @@ export default function Home() {
                 >
                   {/* Before image */}
                   <div className="absolute inset-0 z-10 pointer-events-none">
-                    <Image
+                    <img
                       src="/images/before.jpg"
                       alt="Before color grading"
                       className="w-full h-full object-cover"
@@ -735,7 +733,7 @@ export default function Home() {
                       clipPath: `inset(0 0 0 ${sliderPosition}%)`
                     }}
                   >
-                    <Image
+                    <img
                       src="/images/after.jpg"
                       alt="After color grading with Luminora"
                       className="w-full h-full object-cover"
@@ -782,7 +780,7 @@ export default function Home() {
                 {/* Image Section */}
                 <div className="relative group cursor-pointer" onClick={() => window.location.href = '/guide'}>
                   <div className="w-full h-full rounded-xl overflow-hidden border-2 border-[#FF6B00] shadow-lg shadow-[#FF6B00]/20">
-                    <Image
+                    <img
                       src="/images/luminora.png"
                       alt="Luminora PowerGrade Preview"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

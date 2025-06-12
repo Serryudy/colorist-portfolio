@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 
 const CineGradeGuide = () => {
   return (
@@ -33,15 +32,14 @@ const CineGradeGuide = () => {
                 A meticulously crafted node structure that transforms ordinary footage into cinematic masterpieces. This PowerGrade emulates the look and feel of footage shot on high-end cinema cameras, with film-like characteristics, balanced highlights and shadows, and the texture that defines professional cinematography.
               </p>
               <div className="italic text-2xl text-gray-400 my-12 text-center px-8">
-                &ldquo;The right color grade doesn&apos;t just correct an image &mdash; it tells a story.&rdquo;
+                &ldquo;The right color grade doesn&apos;t just correct an img &mdash; it tells a story.&rdquo;
               </div>
             </div>
             <div className="lg:col-span-5">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg relative">
-                <Image
+                <img
                   src="/images/powergrade/overview.png"
                   alt="CineGrade Overview"
-                  fill
                   className="object-contain"
                 />
               </div>
@@ -120,7 +118,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-4">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <Image
+                <img
                   src="/images/powergrade/CST.png"
                   alt="Input Device Transformation"
                   fill
@@ -137,7 +135,7 @@ const CineGradeGuide = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">CORRECTION NODES</h2>
           <p className="text-xl leading-relaxed mb-12">
-            Three parallel nodes work in harmony to correct and enhance your footage, each serving a specific purpose in balancing the image and retrieving cinematic qualities.
+            Three parallel nodes work in harmony to correct and enhance your footage, each serving a specific purpose in balancing the img and retrieving cinematic qualities.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -200,7 +198,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <Image src="/images/powergrade/correction.png" alt="Correction Nodes" fill className="max-w-full h-auto" />
+            <img src="/images/powergrade/correction.png" alt="Correction Nodes" fill className="max-w-full h-auto" />
           </div>
         </div>
       </section>
@@ -233,7 +231,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-5">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <Image src="/images/powergrade/kodakprintcolor.png" className="max-w-full h-auto" alt="Kodak Print Color" />
+                <img src="/images/powergrade/kodakprintcolor.png" className="max-w-full h-auto" alt="Kodak Print Color" />
               </div>
             </div>
           </div>
@@ -245,7 +243,7 @@ const CineGradeGuide = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">CST</h2>
           <p className="text-xl leading-relaxed mb-8">
-            The Color Space Transform node carefully converts our ACES colorspace footage back to Rec709, ensuring that all previous transformations&apos; outputs match properly with this node&apos;s input. This critical step maintains color fidelity while preparing the image for the creative look development nodes that follow.
+            The Color Space Transform node carefully converts our ACES colorspace footage back to Rec709, ensuring that all previous transformations&apos; outputs match properly with this node&apos;s input. This critical step maintains color fidelity while preparing the img for the creative look development nodes that follow.
           </p>
           
           <div className="bg-[#29282f] p-6 rounded-lg">
@@ -279,7 +277,7 @@ const CineGradeGuide = () => {
             <div>
               <h3 className="text-[#FF6B00] text-2xl font-bold mb-6">CONTRAST</h3>
               <p className="leading-relaxed">
-                The top node creates cinematic contrast through a precisely tuned S-curve. This adds depth and dimension to your image by enhancing the separation between shadows, midtones, and highlights while maintaining a natural, film-like roll-off.
+                The top node creates cinematic contrast through a precisely tuned S-curve. This adds depth and dimension to your img by enhancing the separation between shadows, midtones, and highlights while maintaining a natural, film-like roll-off.
               </p>
             </div>
             
@@ -299,7 +297,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <Image src="/images/powergrade/lookbuild.png" alt="Look Development Visualization" className="max-w-full h-auto" />
+            <img src="/images/powergrade/lookbuild.png" alt="Look Development Visualization" className="max-w-full h-auto" />
           </div>
         </div>
       </section>
@@ -328,7 +326,7 @@ const CineGradeGuide = () => {
             </div>
             <div className="lg:col-span-4">
               <div className="bg-[#29282f] flex items-center justify-center h-80 rounded-lg">
-                <Image src="/images/powergrade/printfilm.png" alt="Film LUT Effect" className="max-w-full h-auto" />
+                <img src="/images/powergrade/printfilm.png" alt="Film LUT Effect" className="max-w-full h-auto" />
               </div>
             </div>
           </div>
@@ -372,12 +370,12 @@ const CineGradeGuide = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-7">
               <p className="text-xl leading-relaxed">
-                A dedicated node for perfecting skin tones ensures that your subjects look natural and healthy. This node uses advanced qualification techniques to isolate and refine skin tones without affecting the rest of the image, bringing the warm, natural glow that characterizes professional cinematography.
+                A dedicated node for perfecting skin tones ensures that your subjects look natural and healthy. This node uses advanced qualification techniques to isolate and refine skin tones without affecting the rest of the img, bringing the warm, natural glow that characterizes professional cinematography.
               </p>
             </div>
             <div className="md:col-span-5">
               <div className="bg-[#29282f] flex items-center justify-center overflow-hidden h-80 rounded-lg">
-                <Image src="/images/powergrade/skintone.png" alt="Skin Tone Correction" className="max-w-full h-auto" />
+                <img src="/images/powergrade/skintone.png" alt="Skin Tone Correction" className="max-w-full h-auto" />
               </div>
             </div>
           </div>
@@ -434,7 +432,7 @@ const CineGradeGuide = () => {
             <div>
               <h3 className="text-[#FF6B00] text-2xl font-bold mb-6">RADIAL BLUR</h3>
               <p className="text-xl leading-relaxed mb-8">
-                A subtle radial blur modified with an ellipse power window adds depth and focus to your image. This emulates the characteristic fall-off of high-end cinema lenses, drawing the viewer&apos;s eye to the subject while adding dimension to the frame.
+                A subtle radial blur modified with an ellipse power window adds depth and focus to your img. This emulates the characteristic fall-off of high-end cinema lenses, drawing the viewer&apos;s eye to the subject while adding dimension to the frame.
               </p>
               
               <h3 className="text-[#FF6B00] text-2xl font-bold mb-6 mt-12">PRISM BLUR & VIGNETTE</h3>
@@ -445,7 +443,7 @@ const CineGradeGuide = () => {
           </div>
           
           <div className="bg-[#29282f] flex items-center justify-center mt-12 h-80 rounded-lg">
-            <Image src="/images/powergrade/final.png" alt="Finishing Nodes" className="max-w-full h-auto" />
+            <img src="/images/powergrade/final.png" alt="Finishing Nodes" className="max-w-full h-auto" />
           </div>
         </div>
       </section>
