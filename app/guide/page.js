@@ -245,7 +245,7 @@ const CineGradeGuide = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">CST</h2>
           <p className="text-xl leading-relaxed mb-8">
-            The Color Space Transform node carefully converts our ACES colorspace footage back to Rec709, ensuring that all previous transformations' outputs match properly with this node's input. This critical step maintains color fidelity while preparing the image for the creative look development nodes that follow.
+            The Color Space Transform node carefully converts our ACES colorspace footage back to Rec709, ensuring that all previous transformations&apos; outputs match properly with this node&apos;s input. This critical step maintains color fidelity while preparing the image for the creative look development nodes that follow.
           </p>
           
           <div className="bg-[#29282f] p-6 rounded-lg">
@@ -389,7 +389,7 @@ const CineGradeGuide = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">NEGATIVE TRANSFORMATION</h2>
           <p className="text-xl leading-relaxed">
-            This compound node creates a specific color tone by transforming colors to negative space. This advanced technique brings unique color relationships that can't be achieved with standard grading tools, resulting in a distinctive cinematic look with complex color interactions.
+            This compound node creates a specific color tone by transforming colors to negative space. This advanced technique brings unique color relationships that can&apos;t be achieved with standard grading tools, resulting in a distinctive cinematic look with complex color interactions.
           </p>
         </div>
       </section>
@@ -434,7 +434,7 @@ const CineGradeGuide = () => {
             <div>
               <h3 className="text-[#FF6B00] text-2xl font-bold mb-6">RADIAL BLUR</h3>
               <p className="text-xl leading-relaxed mb-8">
-                A subtle radial blur modified with an ellipse power window adds depth and focus to your image. This emulates the characteristic fall-off of high-end cinema lenses, drawing the viewer's eye to the subject while adding dimension to the frame.
+                A subtle radial blur modified with an ellipse power window adds depth and focus to your image. This emulates the characteristic fall-off of high-end cinema lenses, drawing the viewer&apos;s eye to the subject while adding dimension to the frame.
               </p>
               
               <h3 className="text-[#FF6B00] text-2xl font-bold mb-6 mt-12">PRISM BLUR & VIGNETTE</h3>
